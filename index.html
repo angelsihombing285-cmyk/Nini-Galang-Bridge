@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Nining Galang Bridge — Tangkahan Eco-Tourism & Local Craft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{bg:'var(--bg)',card:'var(--card)',ink:'var(--ink)',mut:'var(--mut)',line:'var(--line)',forest:'#1B4332',head:'var(--head)',wood:'#1F3A2A',gold:'#D4A373'},fontFamily:{head:['"Plus Jakarta Sans"','sans-serif'],body:['Inter','sans-serif']}}}}
+</script>
+<style>
+:root{--bg:#F8F5F0;--card:#fff;--ink:#1d2b23;--mut:#5a6b61;--line:#e7dfd2;--head:#1B4332;--wood:#1F3A2A;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4rem)}
+body{background:var(--bg);color:var(--ink);-webkit-tap-highlight-color:transparent;}
+.fld{width:100%;border:1px solid var(--line);border-radius:.85rem;padding:.8rem .9rem;background:var(--bg);color:var(--ink);font-size:16px;margin-top:.3rem}
+.btn{background:#1B4332;color:#fff;border-radius:.85rem;padding:.85rem 1.2rem;font-weight:600;min-height:48px;display:flex;align-items:center;justify-content:center;transition:.15s}
+.btn:active{transform:scale(0.98)}
+.btn2{background:#D4A373;color:#1B4332}
+.chip{padding:.6rem 1.1rem;border-radius:999px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:.875rem;min-height:44px;white-space:nowrap}
+.chip.on{background:#1B4332;color:#fff;border-color:#1B4332}
+.qb{width:2.5rem;height:2.5rem;border:1px solid var(--line);border-radius:.6rem;font-weight:700;display:grid;place-items:center}
+.bn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:60px;position:relative;font-size:10px}
+.bn b{font-size:18px;font-weight:400}
+.lbl{display:block;font-size:.8rem;font-weight:600;color:var(--mut);margin-bottom:.2rem}
+.gal{scrollbar-width:none}.gal::-webkit-scrollbar{display:none}
+</style>
+</head>
+<body class="font-body antialiased pb-24 lg:pb-0">
+
+<header class="sticky top-0 z-40 bg-card/95 backdrop-blur-md border-b border-line" style="top:env(safe-area-inset-top,0px)">
+ <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+  <a href="#beranda" class="flex items-center gap-2 font-head font-extrabold text-head leading-tight"><span id="logo" class="text-2xl">🌉</span><span class="text-xs sm:text-sm md:text-base">Nining Galang Bridge<small class="block text-[9px] font-semibold text-forest tracking-wider">TANGKAHAN ECO-TOURISM</small></span></a>
+  <nav class="hidden lg:flex items-center gap-6 text-sm font-medium">
+   <a href="#beranda">Beranda</a><button onclick="openM('pre')">Pre-Experience</button><a href="#paket">Paket Wisata</a><a href="#toko">Toko UMKM</a><a href="#rute">Panduan &amp; Rute</a>
+   <button onclick="drawer(true)" class="relative font-semibold">🛒 Keranjang <span class="cb hidden absolute -top-2 -right-4 bg-gold text-forest text-[10px] font-bold rounded-full px-1.5 py-0.2">0</span></button>
+  </nav>
+  <a href="#paket" class="btn btn2 text-xs sm:text-sm !min-h-[40px] !py-2 !px-3">Pesan Paket</a>
+ </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section id="beranda" class="relative bg-forest text-white overflow-hidden">
+ <div id="hero-slides" class="absolute inset-0"></div>
+ <div class="absolute inset-0" style="background:linear-gradient(180deg,rgba(10,30,20,.85) 0%,rgba(10,30,20,.5) 100%)"></div>
+ <div class="relative max-w-6xl mx-auto px-4 py-12 sm:py-16 md:py-24">
+  <span class="inline-block text-xs font-semibold bg-gold text-forest rounded-full px-3 py-1">📍 Dusun Kwala Buluh · Tangkahan, Langkat</span>
+  <h1 class="font-head font-extrabold text-2xl sm:text-3xl md:text-5xl leading-tight mt-3 max-w-2xl">Petualangan Ekowisata Autentik &amp; Konservasi Gajah</h1>
+  <p class="mt-3 max-w-xl text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">Mandikan gajah, jelajahi hutan hujan Leuser, arungi sungai jernih, menginap di homestay pilihan, dan dukung pengrajin lokal.</p>
+  <div class="mt-5 flex flex-wrap gap-3">
+   <button class="btn btn2 text-sm w-full sm:w-auto" onclick="openM('pre')">▶ Virtual Pre-Experience</button>
+   <a href="#paket" class="btn !bg-white/15 border border-white/40 text-sm w-full sm:w-auto grid place-items-center">Jelajahi Paket</a>
+  </div>
+  <div class="mt-6 bg-card text-ink rounded-2xl p-4 shadow-xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1fr_1fr_auto] gap-3 items-end max-w-2xl">
+   <label class="lbl">Tanggal kunjungan<input id="qd" type="date" class="fld"></label>
+   <label class="lbl">Jumlah peserta<input id="qp" type="number" min="1" value="2" class="fld"></label>
+   <button class="btn w-full sm:col-span-2 lg:col-span-1" onclick="quick()">Cari Paket</button>
+  </div>
+ </div>
+</section>
+
+<!-- KEUNGGULAN -->
+<section class="max-w-6xl mx-auto px-4 py-10 md:py-16">
+ <h2 class="font-head font-extrabold text-xl sm:text-2xl md:text-3xl text-head">Standar Tata Kelola &amp; Pengelolaan Web</h2>
+ <p class="text-mut text-sm sm:text-base mt-2 max-w-2xl">Wisata tertata transparan: mendukung operasional web, kesejahteraan warga, dan konservasi gajah.</p>
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+  <div class="bg-card border border-line rounded-2xl p-4"><div class="text-3xl">🎫</div><h3 class="font-head font-bold text-head mt-2">Harga Transparan</h3><p class="text-sm text-mut mt-1">Biaya terstruktur, tiket &amp; pungutan TNGL dihitung sesuai tarif resmi.</p></div>
+  <div class="bg-card border border-line rounded-2xl p-4"><div class="text-3xl">💻</div><h3 class="font-head font-bold text-head mt-2">Pengembangan Web</h3><p class="text-sm text-mut mt-1">Margin wajar disisihkan untuk kelangsungan server, pembaruan fitur, dan promosi.</p></div>
+  <div class="bg-card border border-line rounded-2xl p-4"><div class="text-3xl">🧺</div><h3 class="font-head font-bold text-head mt-2">UMKM Lokal</h3><p class="text-sm text-mut mt-1">Kerajinan handmade asli dari pengrajin sekitar jembatan gantung.</p></div>
+  <div class="bg-card border border-line rounded-2xl p-4"><div class="text-3xl">🌦️</div><h3 class="font-head font-bold text-head mt-2">Pantau Cuaca Sungai</h3><p class="text-sm text-mut mt-1">Tubing dan penyeberangan disesuaikan dengan kondisi debit air sungai.</p></div>
+ </div>
+ <div class="mt-6 bg-forest text-white rounded-2xl p-5 md:p-7">
+  <h3 class="font-head font-extrabold text-lg sm:text-xl">🌉 Panduan Keselamatan Jembatan Gantung</h3>
+  <p class="text-white/80 text-xs sm:text-sm mt-1">Bentang 120 meter · Diresmikan 19 Februari 2019</p>
+  <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-4 text-xs sm:text-sm">
+   <li class="bg-white/10 rounded-xl p-3">🚶🏍️ <b>Khusus pejalan kaki &amp; roda 2.</b> Area parkir mobil aman tersedia sebelum jembatan.</li>
+   <li class="bg-white/10 rounded-xl p-3">👥 <b>Maksimal 40 orang</b> berada di jembatan secara bersamaan.</li>
+   <li class="bg-white/10 rounded-xl p-3">🚫📸 <b>Dilarang berhenti atau selfie</b> di tengah jembatan demi keselamatan.</li>
+   <li class="bg-white/10 rounded-xl p-3">🌧️ <b>Ikuti arahan petugas</b> saat cuaca berubah atau debit sungai naik.</li>
+  </ul>
+ </div>
+<div class="mt-6 bg-card border border-line rounded-2xl p-5 md:p-7">
+  <h3 class="font-head font-extrabold text-lg sm:text-xl text-head">🎫 Tiket &amp; Tarif Resmi TNGL</h3>
+  <p class="text-sm text-mut mt-1">Mengacu pada papan tarif PNBP Taman Nasional Gunung Leuser. Dihitung otomatis tanpa mark-up.</p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4 text-xs sm:text-sm">
+   <div class="bg-bg rounded-xl p-3"><b class="text-head">WNI (umum)</b><br>Senin–Sabtu Rp 10.000<br>Minggu/libur nasional Rp 15.000<br><span class="text-[11px] text-mut">per orang per hari</span></div>
+   <div class="bg-bg rounded-xl p-3"><b class="text-head">Pelajar/Mahasiswa (min. 5)</b><br>Senin–Sabtu Rp 5.000<br>Minggu/libur nasional Rp 7.500<br><span class="text-[11px] text-mut">bawa kartu pelajar/KTM</span></div>
+   <div class="bg-bg rounded-xl p-3"><b class="text-head">Wisatawan Asing (WNA)</b><br>Rp 150.000<br><span class="text-[11px] text-mut">per orang per hari</span></div>
+   <div class="bg-bg rounded-xl p-3"><b class="text-head">Pungutan Tubing</b><br>Rp 15.000<br><span class="text-[11px] text-mut">per orang (WNI &amp; WNA)</span></div>
+  </div>
+ </div>
+</section>
+
+<!-- PAKET -->
+<section id="paket" class="max-w-6xl mx-auto px-4 py-6 md:py-10">
+ <h2 class="font-head font-extrabold text-xl sm:text-2xl md:text-3xl text-head">Paket Wisata &amp; Homestay</h2>
+ <p class="text-mut text-sm mt-1">Pilih paket harian atau komplit dengan homestay lokal pilihan terbaik.</p>
+ <div id="flt" class="flex gap-2 overflow-x-auto py-3 gal -mx-4 px-4 sm:mx-0 sm:px-0"></div>
+ <div id="pk" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-2"></div>
+</section>
+
+<!-- TOKO -->
+<section id="toko" class="max-w-6xl mx-auto px-4 py-10">
+ <h2 class="font-head font-extrabold text-xl sm:text-2xl md:text-3xl text-head">Toko UMKM Lokal Tangkahan</h2>
+ <p class="text-mut text-sm mt-1 max-w-2xl">Kerajinan tangan otentik warga sekitar Jembatan Nining Galang.</p>
+ <div id="pr" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6"></div>
+</section>
+
+<!-- RUTE -->
+<section id="rute" class="max-w-6xl mx-auto px-4 py-6 md:py-12">
+ <h2 class="font-head font-extrabold text-xl sm:text-2xl md:text-3xl text-head">Cek Rute &amp; Estimasi Biaya</h2>
+ <p class="text-mut text-sm mt-1 max-w-2xl">Panduan perjalanan dari kota asal menuju Ekowisata Tangkahan.</p>
+ <div class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-5 mt-6">
+  <div class="bg-card border border-line rounded-2xl p-4 space-y-3 h-fit">
+   <label class="lbl">Berangkat dari<select id="o" class="fld" onchange="rute()"><option value="kno">Bandara Kualanamu</option><option value="mdn" selected>Kota Medan</option><option value="bnj">Binjai</option><option value="stb">Stabat</option></select></label>
+   <label class="lbl">Moda transportasi<select id="m" class="fld" onchange="rute()"><option value="car">Sewa mobil + sopir</option><option value="bus">Travel / shuttle</option><option value="mtr">Motor pribadi</option></select></label>
+   <label class="lbl">Jumlah orang<input id="np" type="number" min="1" value="4" class="fld" oninput="rute()"></label>
+  </div>
+  <div id="rs" class="bg-card border border-line rounded-2xl p-4 md:p-5"></div>
+ </div>
+</section>
+</main>
+
+<footer class="bg-forest text-white">
+ <div class="max-w-6xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
+  <div><h3 class="font-head font-extrabold text-lg">🌉 Nining Galang Bridge</h3><p class="mt-2 text-white/80 text-xs sm:text-sm">Dusun Kwala Buluh, KPPN Tangkahan, Kec. Batang Serangan, Kab. Langkat, Sumatera Utara.</p></div>
+  <div><h3 class="font-head font-bold">Jam Operasional &amp; Kontak</h3><p class="mt-2 text-white/80 text-xs sm:text-sm">Setiap hari 08.00–17.00 WIB<br>Kontak Darurat: 0812-0000-0000<br>Admin WhatsApp: 0812-0000-0000</p></div>
+  <div><h3 class="font-head font-bold">Ekowisata Berkelanjutan</h3><p class="mt-2 text-white/80 text-xs sm:text-sm">Dikembangkan bersama warga untuk konservasi gajah, pelestarian hutan, dan pemberdayaan UMKM lokal.</p></div>
+ </div>
+ <p class="text-center text-xs text-white/60 pb-8 px-4">© 2026 Nining Galang Bridge · Harga layanan dikonfirmasi admin; tiket &amp; pungutan resmi TNGL mengikuti tarif resmi.</p>
+</footer>
+
+<!-- BOTTOM NAV MOBILE -->
+<nav class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-card/95 backdrop-blur-md border-t border-line grid grid-cols-5 text-mut font-semibold" style="padding-bottom:env(safe-area-inset-bottom,0px)">
+ <a href="#beranda" class="bn"><b>🏠</b>Beranda</a><button onclick="openM('pre')" class="bn"><b>🎬</b>Pre-Exp</button><a href="#paket" class="bn"><b>🎟️</b>Paket</a><a href="#toko" class="bn"><b>🧺</b>Toko</a>
+ <button onclick="drawer(true)" class="bn"><b>🛒</b>Keranjang<span class="cb hidden absolute top-1 right-4 bg-gold text-forest text-[10px] font-bold rounded-full px-1.5 py-0.2">0</span></button>
+</nav>
+
+<!-- PRE-EXPERIENCE MODAL -->
+<div id="m-pre" class="hidden fixed inset-0 z-50 bg-black/60 place-items-center p-3" onclick="if(event.target==this)closeM('pre')">
+ <div class="bg-card text-ink w-full max-w-xl max-h-[90vh] overflow-y-auto rounded-2xl p-4 sm:p-6">
+  <div class="flex items-center justify-between pb-3 border-b border-line"><h3 class="font-head font-extrabold text-lg text-head">🎬 Virtual Pre-Experience</h3><button onclick="closeM('pre')" class="w-10 h-10 text-xl flex items-center justify-center">✕</button></div>
+  <div class="flex gap-2 py-3 overflow-x-auto"><button class="chip on tb" onclick="tab(0)">🐘 Hari Gajah</button><button class="chip tb" onclick="tab(1)">🌊 Suara Sungai</button><button class="chip tb" onclick="tab(2)">📖 Cerita Lokal</button></div>
+  <div class="pt-1">
+   <div class="tp"><ol class="space-y-2 text-xs sm:text-sm">
+    <li class="flex gap-3 bg-bg rounded-xl p-3"><b class="w-14 text-head">06.30</b>Sarapan dan pemeriksaan kesehatan gajah</li>
+    <li class="flex gap-3 bg-bg rounded-xl p-3"><b class="w-14 text-head">08.30</b>Mahout menuntun gajah menuju sungai</li>
+    <li class="flex gap-3 bg-bg rounded-xl p-3"><b class="w-14 text-head">09.00</b>Sesi memandikan gajah bersama tamu</li>
+    <li class="flex gap-3 bg-bg rounded-xl p-3"><b class="w-14 text-head">12.00</b>Istirahat dan makan siang di tepi hutan</li>
+    <li class="flex gap-3 bg-bg rounded-xl p-3"><b class="w-14 text-head">15.00</b>Sesi mandi sore</li>
+    <li class="flex gap-3 bg-bg rounded-xl p-3"><b class="w-14 text-head">17.30</b>Kembali ke area istirahat</li>
+   </ol><p class="text-xs text-mut mt-3">Jadwal ilustrasi menyesuaikan kondisi gajah dan cuaca.</p></div>
+   <div class="tp hidden text-center py-6">
+    <div class="text-5xl">🌊🌿🐦</div><p class="text-sm text-mut mt-3">Rasakan suasana sungai Tangkahan sebelum tiba.</p>
+    <button id="sb" class="btn mx-auto mt-4 text-sm" onclick="snd()">▶ Putar Suasana Sungai</button>
+    <label class="lbl mt-4">Volume<input id="vol" type="range" min="0.05" max="0.6" step="0.05" value="0.25" class="w-full" oninput="vol()"></label>
+   </div>
+   <div class="tp hidden text-xs sm:text-sm leading-relaxed space-y-3">
+    <p>Tangkahan berada di tepian TN Gunung Leuser, dikenal lewat sungai jernih dan konservasi gajah bersama warga.</p>
+    <p>Jembatan Gantung Kwala Buluh sepanjang 120 meter menghubungkan dusun dengan area wisata.</p>
+   </div>
+   <a href="#paket" onclick="closeM('pre')" class="btn btn2 w-full mt-5 text-sm grid place-items-center">Lihat Paket Wisata</a>
+  </div>
+ </div>
+</div>
+
+<!-- CART DRAWER -->
+<div id="ov" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-xs" onclick="drawer(false)"></div>
+<aside id="dr" class="fixed inset-y-0 right-0 z-[55] w-full max-w-md bg-card text-ink flex flex-col translate-x-full transition-transform duration-300 shadow-2xl" style="padding-bottom:env(safe-area-inset-bottom,0px)" aria-label="Keranjang">
+ <div class="flex items-center justify-between p-4 border-b border-line"><h3 class="font-head font-extrabold text-lg text-head">🛒 Keranjang &amp; Booking</h3><button onclick="drawer(false)" class="w-10 h-10 text-xl flex items-center justify-center">✕</button></div>
+ <div class="flex-1 overflow-y-auto p-4 space-y-4">
+  <div id="ci" class="space-y-3"></div>
+  <div class="text-sm space-y-1 border-t border-line pt-3"><div class="flex justify-between"><span class="text-mut">Subtotal</span><span id="sub"></span></div><div id="ofc" class="space-y-1"></div><div class="flex justify-between"><span class="text-mut">Ongkir suvenir</span><span id="fee"></span></div><div class="flex justify-between font-head font-extrabold text-base sm:text-lg text-head pt-1"><span>Total</span><span id="tot"></span></div></div>
+  <form id="f" class="space-y-3 border-t border-line pt-4">
+   <h4 class="font-head font-bold text-head text-sm">Data Pemesan</h4>
+   <label class="lbl">Nama pemesan<input name="nama" required class="fld" autocomplete="name"></label>
+   <label class="lbl">Nomor WhatsApp<input name="wa" required type="tel" inputmode="tel" pattern="[0-9+ \-]{9,16}" placeholder="08xxxxxxxxxx" class="fld"></label>
+   <label class="lbl">Kota asal<input name="kota" required class="fld"></label>
+   <div class="grid grid-cols-2 gap-3"><label class="lbl">Tanggal kunjungan<input id="td" name="tgl" type="date" required class="fld" onchange="render()"></label><label class="lbl">Jumlah peserta<input id="jp" name="jp" type="number" min="1" required class="fld" oninput="render()"></label></div>
+   <div class="grid grid-cols-2 gap-3"><label class="lbl">Kewarganegaraan<select name="wn" class="fld" onchange="render()"><option value="wni">WNI</option><option value="wna">WNA</option></select></label><label class="lbl">Kategori tiket<select name="kat" class="fld" onchange="render()"><option value="umum">Umum</option><option value="pel">Pelajar/Mahasiswa</option></select></label></div>
+   <label class="flex items-start gap-2 text-xs sm:text-sm"><input type="checkbox" name="libur" class="mt-1" onchange="render()"><span>Tanggal kunjungan bertepatan dengan hari libur nasional / Minggu</span></label>
+   <label class="lbl">Pengiriman suvenir<select id="ship" name="ship" class="fld" onchange="setShip(this.value)"><option value="ambil">Ambil di Lokasi Wisata</option><option value="kirim">Kirim ke Alamat Rumah</option></select></label>
+   <label id="addr-w" class="lbl hidden">Alamat lengkap pengiriman<textarea id="addr" name="addr" rows="2" class="fld"></textarea></label>
+   <label class="lbl">Catatan (opsional)<textarea name="cat" rows="2" class="fld" placeholder="Mis. alergi makanan, permintaan khusus"></textarea></label>
+   <label class="lbl">Metode pembayaran<select name="pay" class="fld"><option>Transfer Bank</option><option>QRIS</option></select></label>
+   <button class="btn w-full mt-2 text-sm">Konfirmasi Pesanan via WhatsApp</button>
+  </form>
+ </div>
+</aside>
+
+<div id="ts" class="fixed left-1/2 -translate-x-1/2 bottom-20 lg:bottom-6 z-[70] bg-forest text-white text-xs sm:text-sm rounded-full px-4 py-2 shadow-lg hidden"></div>
+
+<script>
+const ADMIN_WA='6281200000000';
+const rp=n=>'Rp '+new Intl.NumberFormat('id-ID').format(n),$=s=>document.querySelector(s);
+const art=(g,e)=>`<div class="h-32 grid place-items-center text-5xl sm:text-6xl" style="background:${g}">${e}</div>`;
+const CAT={family:'Family & Edukasi',adv:'Adventure',stay:'Menginap Homestay'};
+const MU=.25; 
+const up=(h,m=MU)=>Math.ceil(h*(1+m)/5000)*5000,sum=a=>a.reduce((t,x)=>t+x[1],0);
+
+const H={
+ p1:[['Memandikan gajah & mahout',100000],['Pemandu lokal',50000],['Snack tradisional',15000],['Asuransi & perlengkapan',10000]],
+ p2:[['Pemandu & ranger',50000],['River tubing',100000],['Makan siang',40000],['Asuransi & perlengkapan',10000]],
+ p3:[['Memandikan gajah',100000],['Pemandu 2 hari',80000],['River tubing',100000],['Homestay standar 1 malam',120000],['Makan lengkap (4x)',145000],['Snack',15000],['Suvenir UMKM gratis',25000],['Asuransi',10000]],
+ p4:[['Memandikan gajah',100000],['Pemandu (rombongan)',30000],['Snack',15000],['Asuransi',10000]],
+ p5:[['Memandikan gajah',100000],['Pemandu',50000],['Homestay keluarga 1 malam',150000],['Makan lengkap (3x)',105000],['Snack',15000],['Asuransi',10000]],
+ p6:[['Homestay lokal 1 malam',120000],['Sarapan',25000]]
+};
+const ROOM={'Homestay Standar (Sharing 3-4 Orang)':0,'Homestay Keluarga (Private Room)':45000,'Homestay Premium Tepi Sungai':80000};
+const roomDl=(m=MU)=>Object.fromEntries(Object.entries(ROOM).map(([k,v])=>[k,up(v,m)]));
+
+const IMG_BASE64 = {
+  hero1: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLS4tGyIyNTEsNSgsLSz/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wgARCAAwADADASIAAhEBAxEB/8QAGwAAAQUBAQAAAAAAAAAAAAAAAgABAwQFBgf/xAAaAQADAQEBAQAAAAAAAAAAAAAAAQIDBAUG/9oADAMBAAIQAxAAAAGuG2aXGZk1lF1Y1bV03u3rI2K87FqF0S62iR0T6lYqS9Ym6V1xV530Vv5/8QAKhABAAIBAwIEBQUBAAAAAAAAAQACEQMSITEEEyJREBQlMkJSgZEUYqH/2gAIAQEAAT8H9Z9lG8WnZ8jE81h7Z5c82Yk3w5FjZidZ5B7IuH1k34iT/AMwN7e8EaW325/D2mH5q7x473j1+Tf6jD4v4e9R6jZq/Z9v68g1D+R5v9t74vBvT32Z0uV36z4xT/E1j+b982+h+G771ZfB//EABkRAAMBAQEAAAAAAAAAAAAAAAABESAxIf/aAAgBAgEBPxDRH3m0eU5//8QAGBEBAQEBAQAAAAAAAAAAAAAAAAEREhL/2gAIAQMBAT8Q+M0X2Z//2Q=="
+};
+
+const PK=[
+{id:'p1',c:'family',n:'Elephant Bathing & River Care',p:up(sum(H.p1)),min:1,d:'±3 jam (pagi/sore)',e:'🐘',g:'linear-gradient(135deg,#2D6A4F,#95d5b2)',inc:['Sesi memandikan gajah','Edukasi pawang (mahout)','Snack tradisional & air minum','Pemandu lokal'],it:['07.30 Check-in','09.00 Memandikan gajah','11.00 Selesai']},
+{id:'p2',c:'adv',n:'Jungle Tracking & River Tubing',p:up(sum(H.p2)),min:1,tub:1,d:'±6 jam',e:'🌿',g:'linear-gradient(135deg,#1B4332,#52b788)',inc:['Tracking hutan Leuser','River tubing sungai','Makan siang pinggir sungai','Pemandu & perlengkapan'],it:['08.00 Tracking','11.30 Makan siang','13.00 Tubing','15.00 Selesai']},
+{id:'p3',c:'stay',n:'Paket Komplit 2H1M + Homestay',p:up(sum(H.p3)),min:1,stay:1,tub:1,d:'2 hari 1 malam',e:'🏡',g:'linear-gradient(135deg,#7F5539,#D4A373)',o:{'Pilihan Homestay':Object.keys(ROOM)},dl:roomDl(),inc:['1 malam homestay pilihan','Memandikan gajah','Tracking & tubing','Makan lengkap (4x)','Gratis 1 suvenir UMKM'],it:['Hari 1: Check-in, gajah','Hari 2: Tracking, tubing']},
+{id:'p4',c:'family',n:'Paket Rombongan / Pelajar',p:up(sum(H.p4),.2),min:5,d:'Fleksibel (min. 5 orang)',e:'🎒',g:'linear-gradient(135deg,#2D6A4F,#D4A373)',inc:['Minimal 5 peserta','Memandikan gajah & snack','Pemandu per kelompok','Tiket pelajar TNGL'],it:['Konsultasi dengan admin']},
+{id:'p5',c:'stay',n:'Eco-Stay Keluarga 2H1M',p:up(sum(H.p5)),min:1,stay:1,d:'2 hari 1 malam',e:'🏡',g:'linear-gradient(135deg,#2D6A4F,#D4A373)',o:{'Pilihan Homestay':Object.keys(ROOM)},dl:roomDl(),inc:['1 malam homestay pilihan','Memandikan gajah','Makan lengkap (3x)','Ramah anak'],it:['Hari 1: Gajah','Hari 2: Santai & pulang']},
+{id:'p6',c:'stay',n:'Tambahan Menginap 1 Malam',p:up(sum(H.p6),.2),min:1,stay:1,d:'1 malam ekstra',e:'🛏️',g:'linear-gradient(135deg,#7F5539,#e0b995)',o:{'Pilihan Homestay':Object.keys(ROOM)},dl:roomDl(.2),inc:['1 malam homestay','Sarapan pagi'],it:['Check-in sore','Check-out pagi']}];
+
+const PR=[
+{id:'u1',n:'Gantungan Kunci Gajah',by:'UMKM Tangkahan',p:20000,s:50,e:'🐘',g:'linear-gradient(135deg,#95d5b2,#d8f3dc)',o:{Warna:['Natural','Cokelat','Karamel']}},
+{id:'u2',n:'Pajangan Gajah',by:'UMKM Tangkahan',p:40000,s:20,e:'🐘',g:'linear-gradient(135deg,#7F5539,#d4a373)',o:{Ukuran:['Kecil','Sedang','Besar']},dl:{'Sedang':10000,'Besar':25000}},
+{id:'u3',n:'Asbak Handmade',by:'UMKM Tangkahan',p:30000,s:25,e:'🏺',g:'linear-gradient(135deg,#6b705c,#cb997e)',o:{Bahan:['Kayu Pilihan','Tanah Liat']}},
+{id:'u4',n:'Gelang Tali',by:'UMKM Tangkahan',p:12000,s:60,e:'🧵',g:'linear-gradient(135deg,#2D6A4F,#b7e4c7)',o:{Warna:['Merah','Hijau','Biru','Hitam','Multiwarna']}},
+{id:'u5',n:'Kalung Tali + Liontin',by:'UMKM Tangkahan',p:22000,s:40,e:'📿',g:'linear-gradient(135deg,#D4A373,#f1dfc8)',o:{Liontin:['Gajah','Daun Hutan','Gunung','Ombak','Bunga']}},
+{id:'u6',n:'Kacamata (Bingkai Kayu)',by:'UMKM Tangkahan',p:37000,s:18,e:'🕶️',g:'linear-gradient(135deg,#1B4332,#74c69d)',o:{Model:['Hitam','Cokelat','Bambu','Vintage']}},
+{id:'u7',n:'Pakaian Khas Tangkahan',by:'UMKM Tangkahan',p:65000,s:30,e:'👕',g:'linear-gradient(135deg,#52b788,#d8f3dc)',o:{Ukuran:['S','M','L','XL'],Model:['Kaos Leuser','Kemeja Motif']}},
+{id:'u8',n:'Hiasan Gantung “I Love Indonesia”',by:'UMKM Tangkahan',p:20000,s:35,e:'❤️',g:'linear-gradient(135deg,#bc4749,#f2cc8f)',o:{Kategori:['Standard','Kayu Ukir']}},
+{id:'u9',n:'Ukiran Pemandangan',by:'UMKM Tangkahan',p:22000,s:10,e:'🏞️',g:'linear-gradient(135deg,#2D6A4F,#D4A373)',o:{Ukuran:['Kecil','Sedang','Besar']},dl:{'Sedang':10000,'Besar':30000}},
+{id:'u10',n:'Magnet Tempel',by:'UMKM Tangkahan',p:25000,s:80,e:'🧲',g:'linear-gradient(135deg,#95d5b2,#D4A373)',o:{Motif:['Pemandangan','Gajah']}}
+];
+
+const sel=id=>[...document.querySelectorAll(`[data-p="${id}"]`)].map(s=>s.value);
+const price=(x,v)=>x.p+v.reduce((t,o)=>t+(x.dl&&o in x.dl?x.dl[o]:0),0);
+function upd(id){const x=PK.concat(PR).find(a=>a.id==id);$('#pp-'+id).textContent=rp(price(x,sel(id)))}
+
+let CART=[];
+function renderHero(){$('#hero-slides').innerHTML=`<img src="${IMG_BASE64.hero1}" class="absolute inset-0 w-full h-full object-cover">`;}
+
+function renderPkg(f='all'){
+ const pk=$('#pk');
+ const dat=f==='all'?PK:PK.filter(x=>x.c===f);
+ pk.innerHTML=dat.map(x=>{
+  const opts=x.o?Object.entries(x.o).map(([k,arr])=>`<label class="lbl mt-2">${k}<select class="fld text-sm" data-p="${x.id}" onchange="upd('${x.id}')">${arr.map(v=>`<option>${v}</option>`).join('')}</select></label>`):'';
+  return `<div class="bg-card border border-line rounded-2xl overflow-hidden flex flex-col justify-between shadow-xs">
+   <div>
+    <div class="relative h-36 sm:h-40 overflow-hidden">${art(x.g,x.e)}</div>
+    <div class="p-4">
+     <span class="text-[11px] font-semibold text-forest bg-bg px-2.5 py-1 rounded-md">${CAT[x.c]} · ${x.d}</span>
+     <h3 class="font-head font-bold text-base sm:text-lg text-head mt-2">${x.n}</h3>
+     <ul class="text-xs text-mut mt-2 space-y-1">${x.inc.map(i=>`<li>✓ ${i}</li>`).join('')}</ul>
+     ${opts}
+    </div>
+   </div>
+   <div class="p-4 pt-0 border-t border-line mt-4">
+    <div class="flex items-center justify-between mb-3 pt-3">
+     <span class="text-xs text-mut">Mulai dari</span>
+     <span id="pp-${x.id}" class="font-head font-extrabold text-base sm:text-lg text-head">${rp(x.p)}</span>
+    </div>
+    <button class="btn w-full text-sm !min-h-[42px]" onclick="addPkg('${x.id}')">+ Pesan Paket</button>
+   </div>
+  </div>`;
+ }).join('');
+}
+
+function renderProd(){
+ const pr=$('#pr');
+ pr.innerHTML=PR.map(x=>{
+  const opts=x.o?Object.entries(x.o).map(([k,arr])=>`<label class="lbl mt-2">${k}<select class="fld text-sm" data-p="${x.id}" onchange="upd('${x.id}')">${arr.map(v=>`<option>${v}</option>`).join('')}</select></label>`):'';
+  return `<div class="bg-card border border-line rounded-2xl overflow-hidden flex flex-col justify-between shadow-xs">
+   <div>
+    <div class="relative h-36 overflow-hidden">${art(x.g,x.e)}</div>
+    <div class="p-4">
+     <span class="text-[10px] text-wood font-semibold">Oleh ${x.by}</span>
+     <h3 class="font-head font-bold text-sm sm:text-base text-head mt-0.5">${x.n}</h3>
+     ${opts}
+    </div>
+   </div>
+   <div class="p-4 pt-0 border-t border-line mt-3">
+    <div class="flex items-center justify-between mb-3 pt-3">
+     <span class="text-xs text-mut">Harga</span>
+     <span id="pp-${x.id}" class="font-head font-extrabold text-sm sm:text-base text-head">${rp(x.p)}</span>
+    </div>
+    <button class="btn btn2 w-full text-sm !py-2 !min-h-[40px]" onclick="addProd('${x.id}')">+ Keranjang</button>
+   </div>
+  </div>`;
+ }).join('');
+}
+
+function renderFlt(){
+ const flt=$('#flt');
+ const cats=[['all','Semua Paket'],['family','Family & Edukasi'],['adv','Adventure'],['stay','Menginap Homestay']];
+ flt.innerHTML=cats.map(([k,l])=>`<button class="chip ${k==='all'?'on':''}" onclick="fltPkg('${k}',this)">${l}</button>`).join('');
+}
+
+function fltPkg(c,el){
+ document.querySelectorAll('#flt .chip').forEach(c=>c.classList.remove('on'));
+ el.classList.add('on');
+ renderPkg(c);
+}
+
+function addPkg(id){
+ const x=PK.find(a=>a.id===id);
+ const v=sel(id);
+ const finalPrice=price(x,v);
+ const optStr=v.length?` (${v.join(', ')})`:'';
+ const qty=parseInt($('#qp').value)||2;
+ CART.push({id:x.id,name:x.n+optStr,price:finalPrice,qty:qty,type:'pkg'});
+ updateCart();
+ drawer(true);
+ showToast('Paket ditambahkan ke keranjang!');
+}
+
+function addProd(id){
+ const x=PR.find(a=>a.id===id);
+ const v=sel(id);
+ const finalPrice=price(x,v);
+ const optStr=v.length?` (${v.join(', ')})`:'';
+ const ex=CART.find(i=>i.id===id && i.name===x.n+optStr && i.type==='prod');
+ if(ex){ex.qty++;}else{CART.push({id:x.id,name:x.n+optStr,price:finalPrice,qty:1,type:'prod'});}
+ updateCart();
+ drawer(true);
+ showToast('Suvenir ditambahkan ke keranjang!');
+}
+
+function updateCart(){
+ const count=CART.reduce((t,i)=>t+i.qty,0);
+ document.querySelectorAll('.cb').forEach(el=>{
+  el.textContent=count;
+  if(count>0) el.classList.remove('hidden'); else el.classList.add('hidden');
+ });
+ const ci=$('#ci');
+ if(CART.length===0){
+  ci.innerHTML=`<div class="text-center py-8 text-mut text-sm">Keranjang masih kosong.</div>`;
+  $('#sub').textContent=rp(0);$('#fee').textContent=rp(0);$('#tot').textContent=rp(0);$('#ofc').innerHTML='';
+  return;
+ }
+ ci.innerHTML=CART.map((it,idx)=>`<div class="flex items-center justify-between bg-bg rounded-xl p-3 text-xs sm:text-sm">
+  <div><b>${it.name}</b><div class="text-[11px] text-mut">${rp(it.price)} x ${it.qty}</div></div>
+  <div class="flex items-center gap-2">
+   <button class="qb text-sm" onclick="chg(${idx},-1)">-</button>
+   <span class="font-bold w-5 text-center">${it.qty}</span>
+   <button class="qb text-sm" onclick="chg(${idx},1)">+</button>
+  </div>
+ </div>`).join('');
+ render();
+}
+
+function chg(idx,d){
+ CART[idx].qty+=d;
+ if(CART[idx].qty<=0) CART.splice(idx,1);
+ updateCart();
+}
+
+function drawer(open){
+ const dr=$('#dr'), ov=$('#ov');
+ if(open){dr.classList.remove('translate-x-full');ov.classList.remove('hidden');}
+ else{dr.classList.add('translate-x-full');ov.classList.add('hidden');}
+}
+
+function setShip(v){
+ const aw=$('#addr-w');
+ if(v==='kirim') aw.classList.remove('hidden'); else aw.classList.add('hidden');
+ render();
+}
+
+function render(){
+ const sub=sum(CART.map(i=>[i,i.price*i.qty]));
+ const jp=parseInt($('input[name="jp"]').value)||parseInt($('#qp').value)||2;
+ const wn=$('select[name="wn"]').value;
+ const kat=$('select[name="kat"]').value;
+ const isLibur=$('input[name="libur"]').checked;
+ 
+ let tPrice=0;
+ if(wn==='wna'){
+  tPrice=150000*jp;
+ }else{
+  if(kat==='pel'){
+   tPrice=(isLibur?7500:5000)*jp;
+  }else{
+   tPrice=(isLibur?15000:10000)*jp;
+  }
+ }
+ const hasTubing=CART.some(i=>i.id==='p2'||i.id==='p3');
+ const tubingPrice=hasTubing?(15000*jp):0;
+ const totalTNGL=tPrice+tubingPrice;
+
+ const ship=$('#ship').value;
+ const hasProd=CART.some(i=>i.type==='prod');
+ const fee=(ship==='kirim'&&hasProd)?25000:0;
+ 
+ $('#sub').textContent=rp(sub);
+ $('#fee').textContent=rp(fee);
+ $('#tot').textContent=rp(sub+totalTNGL+fee);
+ 
+ let ofcHtml=`<div class="flex justify-between text-xs text-mut"><span>Tiket &amp; Pungutan TNGL (${jp} orang)</span><span>${rp(totalTNGL)}</span></div>`;
+ if(hasTubing) ofcHtml+=`<div class="flex justify-between text-[11px] text-mut pl-2"><span>- Termasuk Pungutan Tubing</span><span>${rp(tubingPrice)}</span></div>`;
+ $('#ofc').innerHTML=ofcHtml;
+}
+
+function rute(){
+ const o=$('#o').value, m=$('#m').value, np=parseInt($('#np').value)||4;
+ const costMap={kno:{car:350000,bus:90000,mtr:35000},mdn:{car:300000,bus:75000,mtr:25000},bnj:{car:250000,bus:60000,mtr:20000},stb:{car:180000,bus:45000,mtr:15000}};
+ const timeMap={kno:'±3.5 - 4 jam',mdn:'±3 - 3.5 jam',bnj:'±2.5 - 3 jam',stb:'±2 jam'};
+ const c=costMap[o][m]*Math.ceil(np/(m==='car'?4:1));
+ $('#rs').innerHTML=`<h3 class="font-head font-bold text-base sm:text-lg text-head">Estimasi Perjalanan (${np} Orang)</h3>
+ <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3 text-sm">
+  <div class="bg-bg rounded-xl p-3"><span class="text-xs text-mut">Waktu Tempuh</span><br><b class="text-head">${timeMap[o]}</b></div>
+  <div class="bg-bg rounded-xl p-3"><span class="text-xs text-mut">Estimasi Biaya Transportasi</span><br><b class="text-head">${rp(c)}</b></div>
+ </div>
+ <p class="text-xs text-mut mt-3">Kendaraan roda empat parkir di area khusus sebelum Jembatan Gantung Kwala Buluh.</p>`;
+}
+
+function quick(){
+ const qd=$('#qd').value, qp=$('#qp').value;
+ if(qd) $('#td').value=qd;
+ if(qp) { $('input[name="jp"]').value=qp; $('#jp').value=qp; }
+ document.querySelector('#paket').scrollIntoView({behavior:'smooth'});
+ render();
+}
+
+function openM(id){document.getElementById('m-'+id).classList.remove('hidden')}
+function closeM(id){document.getElementById('m-'+id).classList.add('hidden')}
+
+function tab(idx){
+ document.querySelectorAll('.tp').forEach((el,i)=>{if(i===idx)el.classList.remove('hidden');else el.classList.add('hidden');});
+ document.querySelectorAll('.tb').forEach((el,i)=>{if(i===idx)el.classList.add('on');else el.classList.remove('on');});
+}
+
+let aud=null;
+function snd(){
+ if(!aud){aud=new Audio('https://actions.google.com/sounds/v1/ambiences/ जंगल.ogg');aud.loop=true;}
+ if(aud.paused){aud.play();$('#sb').textContent='⏸ Jeda Suasana';}
+ else{aud.pause();$('#sb').textContent='▶ Putar Suasana Sungai';}
+}
+function vol(){if(aud)aud.volume=$('#vol').value;}
+
+function showToast(m){
+ const ts=$('#ts');
+ ts.textContent=m;
+ ts.classList.remove('hidden');
+ setTimeout(()=>ts.classList.add('hidden'),3000);
+}
+
+$('#f').onsubmit=e=>{
+ e.preventDefault();
+ const fd=new FormData(e.target);
+ let msg=`*PESANAN EKOWISATA TANGKAHAN*
+Nama: ${fd.get('nama')}
+No WA: ${fd.get('wa')}
+Kota Asal: ${fd.get('kota')}
+Tgl Kunjungan: ${fd.get('tgl')}
+Jumlah Peserta: ${fd.get('jp')} orang (${fd.get('wn').toUpperCase()} - ${fd.get('kat')})
+Libur Nasional: ${fd.get('libur')?'Ya':'Tidak'}
+Pengiriman Suvenir: ${fd.get('ship')} ${fd.get('addr')?'\nAlamat: '+fd.get('addr'):''}
+Catatan: ${fd.get('cat')||'-'}
+Metode Bayar: ${fd.get('pay')}
+
+*Rincian Pesanan:*
+`+CART.map(i=>`- ${i.name} x${i.qty} (${rp(i.price*i.qty)})`).join('\n')+`
+
+Subtotal: ${$('#sub').textContent}
+Ongkir Suvenir: ${$('#fee').textContent}
+*Total Perkiraan: ${$('#tot').textContent}*`;
+ window.open(`https://wa.me/${ADMIN_WA}?text=`+encodeURIComponent(msg),'_blank');
+};
+
+document.addEventListener('DOMContentLoaded',()=>{
+ renderHero();
+ renderFlt();
+ renderPkg();
+ renderProd();
+ rute();
+ const today=new Date().toISOString().split('T')[0];
+ $('#qd').value=today; $('#td').value=today;
+});
+</script>
+</body>
+</html>
